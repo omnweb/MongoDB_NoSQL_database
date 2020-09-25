@@ -1,3 +1,4 @@
+help para guia de comandos
 1- Estartar momgod.exe dentro de C:\Program Files\MongoDB\Server\4.4\bin
 2- comando mongo -version
 3- show dbs -> mostra os bancos
@@ -5,5 +6,39 @@
 5- db.createCollection('estados') -> Forma para criar uma coleção
 6- show collections -> mostra as coleções criadas
 7- db.Estados.drop() -> exclui a coleção Estados com letra maiúscula, pois é case sensitive
- 
+8- Inserindo dados -> db.estados.insert({nome:"Acre", sigla:"AC", regiao:"Norte"})
+9- Inserindo ou atualizando com save -> db.estados.save({ nome:"Alagoas", sigla:"AL", regiao:"Nordeste", populacao: 3322000})
+10- Consultando dados -> db.estados.find() {
+    retorno da consulta:
+    { "_id" : ObjectId("5f6e21641ae8ed6fbfec25bc"), "nome" : "Acre", "sigla" : "AC", "regiao" : "Norte" }
+    { "_id" : ObjectId("5f6e22801ae8ed6fbfec25bd"), "nome" : "Alagoas", "sigla" : "AL", "regiao" : "Nordeste", "populacao" : 3322000 }  
+}
+
+11-Consulta de dados usando pretty -> > db.estados.find().pretty()
+retorno da consulta:
+ "_id" : ObjectId("5f6e21641ae8ed6fbfec25bc"),
+        "nome" : "Acre",
+        "sigla" : "AC",
+        "regiao" : "Norte"
+}
+{
+        "_id" : ObjectId("5f6e22801ae8ed6fbfec25bd"),
+        "nome" : "Alagoas",
+        "sigla" : "AL",
+        "regiao" : "Nordeste",
+        "populacao" : 3322000
+
+12- Comandos usando mais de uma linha
+db.estados.insert({
+... nome:"Rio de Janeiro",
+... sigla: "RJ",
+... regiao: "Sudeste",
+... cidades:[{
+... nome:"Niterói",
+... area:133.9,
+... populacao:487562
+... }]
+... })
+
+
 
