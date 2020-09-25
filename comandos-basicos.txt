@@ -1,4 +1,4 @@
-help para guia de comandos
+db.help para guia de comandos
 1- Estartar momgod.exe dentro de C:\Program Files\MongoDB\Server\4.4\bin
 2- comando mongo -version
 3- show dbs -> mostra os bancos
@@ -39,6 +39,31 @@ db.estados.insert({
 ... populacao:487562
 ... }]
 ... })
+
+Desafio: Inserir São Paulo e mais 3 cidades.
+
+> db.estados.save({
+... nome:"São Paulo",
+... sigla:"SP",
+... regiao:"Sudeste",
+... cidades: [{
+... _id: ObjectId(),
+... nome:"Campinas",
+... area:795.7,
+... prefeito:"Jonas Donizette",
+... populacao:1081000
+... },{
+... _id: ObjectId(),
+... nome:"Guarulhos",
+... populacao:1325000
+... },{
+... _id: ObjectId(),
+... nome:"Sorocaba",
+... distanciaCapital:87,
+... populacao:644919
+... }]
+... })
+
 
 
 
