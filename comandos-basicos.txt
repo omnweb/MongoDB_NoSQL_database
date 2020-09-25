@@ -1,0 +1,9 @@
+1- Estartar momgod.exe dentro de C:\Program Files\MongoDB\Server\4.4\bin
+2- comando mongo -version
+3- show dbs -> mostra os bancos
+4- use wm -> Mesmo sem ter nenhum banco com esse nome ele troca para o banco wm
+5- db.createCollection('estados') -> Forma para criar uma coleção
+6- show collections -> mostra as coleções criadas
+7- db.Estados.drop() -> exclui a coleção Estados com letra maiúscula, pois é case sensitive
+ 
+
