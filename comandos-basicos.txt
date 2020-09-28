@@ -1,5 +1,6 @@
 db.help para guia de comandos
 1- Estartar momgod.exe dentro de C:\Program Files\MongoDB\Server\4.4\bin
+1.1 - Executar o comando mongo
 2- comando mongo -version
 3- show dbs -> mostra os bancos
 4- use wm -> Mesmo sem ter nenhum banco com esse nome ele troca para o banco wm
@@ -71,10 +72,9 @@ Desafio: Inserir São Paulo e mais 3 cidades.
 16- Consulta usando operador ou -> > db.estados.find({ $or: [{sigla:"RJ"}, {sigla:"AC"}]}).pretty()
 17- Saber se um resultado está contido dentro de uma tabela -> db.estados.find({ populacao: {$exists: true}
 
-
-
-
-
-
+***** CONSULTAS PAGINADAS
+18- Exibe registros a partir do nº seguinte ao passado como parâmetro -> db.estados.find().skip(1).pretty()
+19- Impondo limite de exibição -> db.estados.find().skip(1).limit(2).pretty()
+19- Contando a quantidade de registros em uma coleção -> db.estados.count()
 
 
