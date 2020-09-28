@@ -64,6 +64,17 @@ Desafio: Inserir São Paulo e mais 3 cidades.
 ... }]
 ... })
 
+*****  CONSULTAS
+13- Retorna o primeiro registro -> db.estados.findOne()
+14- Retornando um objeto usando dados da tabela - > db.estados.findOne({ sigla: "RJ" })
+15- Pode-se usar tbm com pretty ->  db.estados.findOne({ sigla: "RJ" }).pretty()
+16- Consulta usando operador ou -> > db.estados.find({ $or: [{sigla:"RJ"}, {sigla:"AC"}]}).pretty()
+17- Saber se um resultado está contido dentro de uma tabela -> db.estados.find({ populacao: {$exists: true}
+
+
+
+
+
 
 
 
