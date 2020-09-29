@@ -1,0 +1,35 @@
+***** CONSULTAS AGREGADAS - AGREGATE PIPELINE OPERATIONS
+
+//Operadores e estágios começam com $
+*** Trazendo nome dos estados e as cidades
+
+db.estados.aggregate([
+    { $project: {nome: 1, "cidades.nome": 1, _id: 0}}
+])
+
+//  Somar as populações das cidades e agregar por estados 
+// Usando estágio de agregação $project e operador $sum
+// O Id será null, populacaoTotal será o campo criado
+//Agrupando a população de todas as cidades, é como uma promise, composta de passos
+//O passo 2 é composto sobre o resultado obtido no passo um e assim por diante.
+// 3º project, retirando o id null
+
+db.estados.aggregate([
+    {$project:{populacao: {$sum: "$cidades.populacao"}, sigla: 1, _id: 0}},
+    {$group: {_id: null, populacaoTotal: {$sum: "$populacao"}} },    
+    {$project: {_id: 0} }    
+])
+
+
+// Buscar pelo id da cidade de sorocaba que está dentro de algum estado do Brasil
+// passo 1- filtra os estados que contém a cidade de sorocaba
+// 2- Desempacota o passo um montando um objeto que contém estado>cidade para cada cidade retornada
+// 3- Filtra apenas o objet são paulo > sorocaba
+// 4- mostra apenas o id 
+
+db.estados.aggregate([x'
+    { $match: {"cidades.nome": "Sorocaba"}},
+    { $unwind: "$cidades"},
+    { $match: {"cidades.nome": "Sorocaba"}},
+    { $project: {  _id: "$cidades._id" }}
+]).pretty()
