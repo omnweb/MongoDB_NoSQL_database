@@ -1,0 +1,12 @@
+
+// Inserindo a coleção empresas e relacinando com estado através do id 
+db.empresas.insert({
+    nome: "Bradesco",
+    estadoId: ObjectId("5f6e30241ae8ed6fbfec25ca")
+})
+
+// Coleção empresas se relacinando com cidade através do id 
+db.empresas.insert({
+    nome: "Vale",
+    cidadeId: ObjectId("5f6e30241ae8ed6fbfec25c9")
+})
