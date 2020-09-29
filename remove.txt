@@ -1,0 +1,13 @@
+******* REMOVENDO ARQUIVOS
+//Removendo o estado do acre.
+db.estados.remove({sigla:"AC"})
+
+//Deletando estados que não possuem o atributo população
+// Limitando a remoção para apenas 1 registro
+db.estados.remove({populacao: {$exists: true}}, 1)
+
+// Desafio, inserir população de 16720000 no estado do rio de janeiro
+db.estados.update({sigla:"RJ"}, {$set: {populacao: 16720000}})
+
+// Removendo estados com a população menor que 20000000 usando last then
+db.estados.remove({populacao: {$lt: 20000000}})
