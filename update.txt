@@ -1,0 +1,18 @@
+****** UPDATE
+
+//Adicionando populacao ao estado de são paulo
+db.estados.update({sigla: "SP"}, {$set: {populacao:45340000}})
+db.estados.find({sigla: "SP"}).pretty()
+
+//Adicionando um array de cidades dentro do estado de alagoas
+// O primeiro registro pode ser inserido com set, mas se houverem registros, set sobrescreve
+
+db.estados.update({sigla:"AL"}, {$set: {cidades: [{nome: "Maceió"}]}})
+
+// Para atualizar um atributo da coleção que possui sub-atributos, usa o push 
+// Inserindo Santos no estado de são paulo
+db.estados.update({sigla:"SP"}, {$push: {cidades: {nome:"Santos", populacao:433966}}})
+
+// TRazendo estados que possuem populacao
+db.estados.find({populacao: {$exists: true}}, {_id: 0, nome: 1})
+
